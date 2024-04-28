@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ray_traycer.h"
+#include "libft/libft.h"
 
 int	ft_add_camera(char **line)
 {

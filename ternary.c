@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "ray_traycer.h"
+#include "libft/libft.h"
+
 float	tern_f(int cond, float tru, float flse)
 {
 	if (cond)

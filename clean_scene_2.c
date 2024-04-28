@@ -65,8 +65,9 @@ int	ft_close_window(int code, void	*_)
 {
 	(void)code;
 	(void)_;
-	mlx_destroy_image(g_scene->mlx, g_scene->img->img);
-	mlx_destroy_window(g_scene->mlx, g_scene->mlx_win);
+	gui_destroy(g_scene->window);
 	ft_clean_scene();
+	gui_finalize();
+	g_scene = NULL;
 	exit(0);
 }

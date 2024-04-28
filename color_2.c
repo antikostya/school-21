@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ray_traycer.h"
+#include "libft/libft.h"
 
 int	color_plmul_color(t_color *p, t_color *to_sum, float to_mul)
 {

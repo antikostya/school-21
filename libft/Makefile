@@ -2,7 +2,7 @@ NAME = libft.a
 DIR = .
 COMPILER = gcc
 CFLAGS = -Wall -Wextra -Werror -I${DIR}
-OPTIONS = -c
+OPTIONS = -c -O3
 SRCS =	  ft_strnlen     ft_max        ft_min         ft_abs      ft_issmth1   \
           \
           ft_memset      ft_bzero      ft_memcpy      ft_memccpy  ft_memmove   \
@@ -16,7 +16,7 @@ SRCS =	  ft_strnlen     ft_max        ft_min         ft_abs      ft_issmth1   \
           ft_putendl_fd  ft_putnbr_fd										   \
           \
           ft_atod        ft_strcmp     ft_free
-          
+
 BONUS_SRCS = ft_lstnew       ft_lstadd_front  ft_lstsize   ft_lstlast          \
              ft_lstadd_back  ft_lstdelone     ft_lstclear  ft_lstiter          \
              ft_lstmap

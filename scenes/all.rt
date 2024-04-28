@@ -1,7 +1,7 @@
 
 #		resolution
-# R		800		600
-R 1920 1080
+R		800		600
+# R 1920 1080
 
 #		position	view vector		pov
 c		-2,1,-2		0.5,0.2,1			80
@@ -13,7 +13,7 @@ a		0.1
 
 # point	light
 # 		position	intencity	color
-l		1,2,0		0.6			
+l		1,2,0		0.6
 
 # direct light
 		# direction	intncity	color

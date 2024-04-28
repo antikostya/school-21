@@ -1,6 +1,7 @@
 
 #		resolution
-R		1920		1080
+# R		1920		1080
+R 800 600
 
 # cameras
 #		position	view vector		pov

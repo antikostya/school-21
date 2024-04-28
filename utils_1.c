@@ -11,12 +11,7 @@
 /* ************************************************************************** */
 
 #include "ray_traycer.h"
-
-void	put_pixel(t_data *img, int x, int y, unsigned int col)
-{
-	img->addr[(((unsigned)g_scene->res_y >> 1u) + y) *(img->line_length >> 2u)
-		+ ((unsigned)g_scene->res_x >> 1u) + x] = col;
-}
+#include "libft/libft.h"
 
 t_point	*reflect_ray(t_point *l, t_point *n)
 {

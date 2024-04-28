@@ -49,7 +49,7 @@ t_point	*point_cross(t_point *p1, t_point *p2)
 {
 	t_point		*new_point;
 
-	new_point = (t_point *)malloc(sizeof(t_point *));
+	new_point = (t_point *)malloc(sizeof(t_point));
 	if (!new_point)
 		return (NULL);
 	new_point->x = det2(p1->y, p1->z, p2->y, p2->z);

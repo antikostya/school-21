@@ -16,7 +16,6 @@ void	ft_clean_scene(void)
 {
 	if (!g_scene)
 		return ;
-	free(g_scene->img);
 	free_spheres(g_scene->spheres, g_scene->spheres_num);
 	free_planes(g_scene->planes, g_scene->planes_num);
 	free_triangles(g_scene->triangles, g_scene->triangles_num);

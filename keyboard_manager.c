@@ -12,23 +12,22 @@
 
 #include "ray_traycer.h"
 
-int	key_hook(int keycode, void *_)
+void	key_hook(struct gui_window *window, int keycode, bool pressed)
 {
 	t_point	n;
 
-	(void)_;
+	if (!pressed)
+		return ;
 	if (key_switcher_1(keycode, &n))
-		return (0);
+		return ;
 	rotate_matrix(g_scene->current_camera->rotation_matrix, g_scene
 		->current_camera->alpha, g_scene->current_camera
 		->theta, g_scene->current_camera->gamma);
 	minirt_loop();
-	if (keycode == 112)
-		return (screenshot("/media/kostya/D/Clion/Linux/MiniRT/MiniRT/"
-				"scr.bmp"));
-	mlx_put_image_to_window(g_scene->mlx, g_scene->mlx_win, g_scene->img->img,
-		0, 0);
-	return (0);
+	if (keycode == KEY_P)
+		screenshot("./scr.bmp");
+	gui_draw(window);
+	return ;
 }
 
 void	minirt_loop(void)
@@ -51,7 +50,10 @@ void	minirt_loop(void)
 			matrix3_mul(g_scene->current_camera->rotation_matrix, &d);
 			unsigned color = trace_ray(g_scene->current_camera->o, &d,
 					&t_min_max, 1);
-			put_pixel(g_scene->img, x, -y, color);
+			gui_set_pixel(g_scene->window,
+				      g_scene->res_x / 2 + x,
+				      g_scene->res_y / 2 - y - 1,
+				      color);
 			y++;
 		}
 		x++;

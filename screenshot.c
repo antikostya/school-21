@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <z3.h>
+#include <stdint.h>
 #include "ray_traycer.h"
+#include "libft/libft.h"
 
 int	screenshot(const char *fname)
 {
@@ -33,7 +34,7 @@ int	screenshot(const char *fname)
 	header[0x03] = (unsigned) g_scene->res_y >> 16u | 0x2000010000u;
 	_ = write(fd, header, 56);
 	g_scene->res_y *= -1;
-	_ += write(fd, g_scene->img->addr, g_scene->res_x * g_scene->res_y * 4);
+	_ += write(fd, gui_raw_pixels(g_scene->window), g_scene->res_x * g_scene->res_y * 4);
 	(void)_;
 	close(fd);
 	ft_putstr_fd("saved screenshot at ./scr.bmp\n", 1);

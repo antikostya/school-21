@@ -21,21 +21,3 @@ float	triple_product(t_point *n, t_point *a, t_point *p, t_point *v)
 	);
 }
 
-float	q_rsqrt(float number)
-{
-	unsigned long	i;
-	float			x2;
-	float			y;
-	void			*ptr;
-
-	x2 = number * 0.5f;
-	y = number;
-	ptr = &y;
-	i = *(unsigned long *)ptr;
-	i = 0x5f3759df - (i >> 1u);
-	ptr = &i;
-	y = *(float *)ptr;
-	y = y * (1.5f - (x2 * y * y));
-	y = y * (1.5f - (x2 * y * y));
-	return (y);
-}

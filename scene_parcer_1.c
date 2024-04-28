@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "ray_traycer.h"
+#include "get_next_line/get_next_line.h"
+#include "libft/libft.h"
 
 int	init_scene(void)
 {
@@ -92,16 +94,10 @@ int	switcher(char **splt)
 
 int	ft_set_resolution(char **line)
 {
-	int	max_x;
-	int	max_y;
-
 	if (ft_array_size(line) < 3)
 		return (ft_exit_all("Incorrect resolution configuration"));
 	g_scene->res_x = ft_atoi(line[1]);
 	g_scene->res_y = ft_atoi(line[2]);
-	mlx_get_screen_size(g_scene->mlx, &max_x, &max_y);
-	g_scene->res_x = ft_min(max_x, g_scene->res_x);
-	g_scene->res_y = ft_min(max_y, g_scene->res_y);
 	if (ft_check_rangei(g_scene->res_x, 1, 0x7fffffff, "resolution")
 		|| ft_check_rangei(g_scene->res_y, 1, 0x7fffffff, "resolution"))
 		return (1);

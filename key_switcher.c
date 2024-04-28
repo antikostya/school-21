@@ -17,7 +17,7 @@
 
 int	key_switcher_1(int keycode, t_point *n)
 {
-	if (keycode == 65431)
+	if (keycode == KEY_UP)
 	{
 		g_scene->current_camera->alpha -= LOOK_ANGLE
 			* sinf(g_scene->current_camera->gamma);
@@ -25,7 +25,7 @@ int	key_switcher_1(int keycode, t_point *n)
 			* cosf(g_scene->current_camera->gamma);
 		return (0);
 	}
-	else if (keycode == 65433)
+	else if (keycode == KEY_DOWN)
 	{
 		g_scene->current_camera->alpha += LOOK_ANGLE
 			* sinf(g_scene->current_camera->gamma);
@@ -33,7 +33,7 @@ int	key_switcher_1(int keycode, t_point *n)
 			* cosf(g_scene->current_camera->gamma);
 		return (0);
 	}
-	else if (keycode == 119)
+	else if (keycode == KEY_W)
 	{
 		*n = point_stack(0, 0, MOVE_STEP);
 		matrix3_mul(g_scene->current_camera->rotation_matrix, n);
@@ -46,7 +46,7 @@ int	key_switcher_1(int keycode, t_point *n)
 
 int	key_switcher_2(int keycode, t_point *n)
 {
-	if (keycode == 65432)
+	if (keycode == KEY_RIGHT)
 	{
 		g_scene->current_camera->alpha += LOOK_ANGLE
 			* cosf(g_scene->current_camera->gamma);
@@ -54,7 +54,7 @@ int	key_switcher_2(int keycode, t_point *n)
 			* sinf(g_scene->current_camera->gamma);
 		return (0);
 	}
-	else if (keycode == 65430)
+	else if (keycode == KEY_LEFT)
 	{
 		g_scene->current_camera->alpha -= LOOK_ANGLE
 			* cosf(g_scene->current_camera->gamma);
@@ -62,7 +62,7 @@ int	key_switcher_2(int keycode, t_point *n)
 			* sinf(g_scene->current_camera->gamma);
 		return (0);
 	}
-	else if (keycode == 115)
+	else if (keycode == KEY_S)
 	{
 		*n = point_stack(0, 0, -MOVE_STEP);
 		matrix3_mul(g_scene->current_camera->rotation_matrix, n);
@@ -75,21 +75,21 @@ int	key_switcher_2(int keycode, t_point *n)
 
 int	key_switcher_3(int keycode, t_point *n)
 {
-	if (keycode == 97)
+	if (keycode == KEY_A)
 	{
 		*n = point_stack(-MOVE_STEP, 0, 0);
 		matrix3_mul(g_scene->current_camera->rotation_matrix, n);
 		point_plus_point(g_scene->current_camera->o, n);
 		return (0);
 	}
-	else if (keycode == 100)
+	else if (keycode == KEY_D)
 	{
 		*n = point_stack(MOVE_STEP, 0, 0);
 		matrix3_mul(g_scene->current_camera->rotation_matrix, n);
 		point_plus_point(g_scene->current_camera->o, n);
 		return (0);
 	}
-	else if (keycode == 32)
+	else if (keycode == KEY_SPACE)
 	{
 		*n = point_stack(0, MOVE_STEP, 0);
 		matrix3_mul(g_scene->current_camera->rotation_matrix, n);
@@ -104,24 +104,24 @@ int	key_switcher_3(int keycode, t_point *n)
 
 int	key_switcher_4(int keycode, t_point *n)
 {
-	if (keycode == 65507)
+	if (keycode == KEY_LCTRL || keycode == KEY_RCTRL)
 	{
 		*n = point_stack(0, -MOVE_STEP, 0);
 		matrix3_mul(g_scene->current_camera->rotation_matrix, n);
 		point_plus_point(g_scene->current_camera->o, n);
 		return (0);
 	}
-	else if (keycode == 113)
+	else if (keycode == KEY_Q)
 	{
 		g_scene->current_camera->gamma += LOOK_ANGLE;
 		return (0);
 	}
-	else if (keycode == 101)
+	else if (keycode == KEY_E)
 	{
 		g_scene->current_camera->gamma -= LOOK_ANGLE;
 		return (0);
 	}
-	if (keycode == 65307)
+	if (keycode == KEY_X)
 	{
 		ft_close_window(0, NULL);
 		return (1);
@@ -132,14 +132,14 @@ int	key_switcher_4(int keycode, t_point *n)
 
 int	key_switcher_5(int keycode)
 {
-	if (keycode == 99 && g_scene->cameras_num > 1)
+	if (keycode == KEY_ENTER && g_scene->cameras_num > 1)
 	{
 		g_scene->current_camera_num++;
 		g_scene->current_camera_num %= g_scene->cameras_num;
 		g_scene->current_camera = g_scene->cameras[g_scene->current_camera_num];
 		return (0);
 	}
-	else if (keycode != 112 && keycode != 0)
+	else if (keycode != KEY_P && keycode != 0)
 		return (1);
 	return (0);
 }

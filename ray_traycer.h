@@ -16,27 +16,15 @@
 #  define _GNU_SOURCE
 # endif
 
-# include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
 # include "objects.h"
 
-# include <mlx.h>
+# include <guilib.h>
 # include <math.h>
-# include <time.h>
 
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
-
-typedef struct s_data
-{
-	void		*img;
-	unsigned	*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_data;
 
 typedef struct s_object
 {
@@ -53,9 +41,7 @@ typedef struct s_scene
 {
 	int			res_x;
 	int			res_y;
-	void		*mlx;
-	void		*mlx_win;
-	t_data		*img;
+	struct gui_window	*window;
 	float		dist;
 
 	t_camera	**cameras;
@@ -85,7 +71,7 @@ typedef struct s_scene
 	int			lights_num;
 }				t_scene;
 
-t_scene	*g_scene;
+extern t_scene	*g_scene;
 
 # define RECURSION_DEPTH 4
 # define EPS 0.001f
@@ -190,7 +176,6 @@ float			dot(t_point *a, t_point *b);
 float			det2(float a1, float a2, float b1, float b2);
 t_point			*normalize(t_point *n);
 t_point			*normalize_fast(t_point *n);
-void			put_pixel(t_data *img, int x, int y, unsigned int col);
 
 t_point			*reflect_ray(t_point *l, t_point *n);
 float			min3(float a, float b, float c);
@@ -221,7 +206,7 @@ void			free_circles(t_circle **cr, int num);
 void			free_lights(t_light **li, int num);
 void			free_cameras(t_camera **cam, int num);
 
-int				key_hook(int keycode, void *_);
+void				key_hook(struct gui_window *window, int keycode, bool pressed);
 void			minirt_loop(void);
 int				screenshot(const char *fname);
 int				ft_close_window(int code, void *_);
